@@ -12,16 +12,18 @@ const SocialKaKao = () => {
                 Authorization: `Bearer ${token}`,
             },
         });
+        console.log(response);
         return response.data;
+
     };
 
     const kakaoOnSuccess = async (response) => {
         console.log(response);
-        const idToken = response.response.id_token;
+        const access_token = response.response.access_token;
 
         // 사용자 계정 정보 가져오기
         try {
-            const userData = await getKaKaoUserData(idToken);
+            const userData = await getKaKaoUserData(access_token);
             console.log(userData);
             setUserInfo(userData);
         } catch (error) {
@@ -43,8 +45,7 @@ const SocialKaKao = () => {
             {userInfo && (
                 <div>
                     <h2>사용자 정보</h2>
-                    <p>ID: {userInfo.id}</p>
-                    <p>이름: {userInfo.properties.nickname}</p>
+                    <p>이름: {userInfo.kakao_account.profile.nickname}</p>
                 </div>
             )}
         </>
