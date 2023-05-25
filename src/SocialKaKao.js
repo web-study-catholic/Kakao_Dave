@@ -46,6 +46,10 @@ const SocialKaKao = () => {
                 <div>
                     <h2>사용자 정보</h2>
                     <p>이름: {userInfo.kakao_account.profile.nickname}</p>
+                        <img
+                            src={userInfo.kakao_account.profile.profile_image_url}
+                            alt="프로필 사진 대체"
+                        />
                 </div>
             )}
         </>
