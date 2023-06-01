@@ -28,8 +28,10 @@ const SocialKaKao = () => {
         // 사용자 계정 정보 가져오기
         try {
             const userData = await getKaKaoUserData(access_token);
-            console.log(userData);
             setUserInfo(userData);
+            console.log('this is', userData);
+            const storedToken = '1234abc';
+            localStorage.setItem('authToken',storedToken);
         } catch (error) {
             console.log(error);
         }
@@ -41,8 +43,9 @@ const SocialKaKao = () => {
 
     const autoLogin = () => {
         // const storedToken = localStorage.getItem('authToken');
-        const storedToken = '1234abc';
+        // const storedToken = '1234abc';
         // if (userInfo?.kakao_account?.profile?.nickname === '김원준' && storedToken === '1234abc') {
+        const storedToken = localStorage.getItem('authToken');
         if (storedToken === '1234abc') {
             console.log('Automatically logged in');
             alert('자동로그인 되었습니다');
